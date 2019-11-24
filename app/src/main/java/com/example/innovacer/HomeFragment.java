@@ -1,7 +1,6 @@
 package com.example.innovacer;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.LocalDateTime;
@@ -29,10 +27,10 @@ import java.util.regex.Pattern;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-
     private View root;
     private EditText vName,vEmail,vNumber,hName,hAddress,hEmail,hNumber;
     private TextInputLayout vEmailLayout,vMobileLayout,hEmailLayout,hMobileLayout;
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -42,11 +40,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+
+
     private Boolean isValidMobile(String number){
         String num_Pattern = "^[1-9]{1}[0-9]{9}$";
         Pattern pattern = Pattern.compile(num_Pattern);
         Matcher matcher = pattern.matcher(number);
         return matcher.matches();
+    }
+    private void sendEmail(String to,String message) {
+
+        //Creating SendMail object
+        SendMail sm = new SendMail(root.getContext(),to,"New Visitor",message);
+
+        //Executing sendmail to send email
+        sm.execute();
     }
 
     @Override
@@ -54,6 +63,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         root =  inflater.inflate(R.layout.fragment_home, container, false);
+
+
         vName = root.findViewById(R.id.vName);
         vEmail = root.findViewById(R.id.vEmail);
         vNumber = root.findViewById(R.id.vMobile);
@@ -66,6 +77,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         vMobileLayout = root.findViewById(R.id.vMobile_layout);
         hMobileLayout = root.findViewById(R.id.hMobile_layout);
         root.findViewById(R.id.submit).setOnClickListener(this);
+
         return root;
     }
 
@@ -92,6 +104,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             hMobileLayout.setError("Invalid Number");
             return;
         }
+        String msg;
+        msg = "Details of the Visitor is mentioned below \n" + "Name: " + vName.getText().toString().trim() + "\n" + "Email: "  + vEmail.getText().toString().trim() + "\n" + "Contact Number: " + vNumber.getText().toString().trim();
+        sendEmail(hEmail.getText().toString().trim(),msg);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         DateTimeFormatter dt = DateTimeFormatter.ofPattern("dd/mm/yyyy");
         LocalDateTime now = LocalDateTime.now();
@@ -122,6 +137,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 else{
                     Toast.makeText(root.getContext(),"Some Error Occured",Toast.LENGTH_SHORT).show();
                 }
+                progressDialog.hide();
             }
         });
     }
