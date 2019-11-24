@@ -15,12 +15,6 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,12 +28,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Visitor Name: "/>
+                        android:text="Visitor Name: "
+                        android:textSize="18sp"
+                        />
                     <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/vName"
-                    />
+                    android:textSize="18sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -72,11 +68,6 @@
                     />
             </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#000000"
-                />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,11 +80,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Host Name: "/>
+                        android:text="Host Name: "
+                        android:textSize="18sp"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/hName"
+                        android:textSize="18sp"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -104,7 +98,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Host Mobile: "/>
+                        android:text="Host Mobile: "/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -119,38 +113,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Host Email: "/>
+                        android:text="Host Email: "/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/hEmail"
                         />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  Host Address: "/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hAddress"
-                        />
-                </LinearLayout>
             </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkout"
+            android:text="Check Out"
+            android:layout_gravity="center"
+            />
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkout"
-        android:text="Check Out"
-        android:layout_gravity="center"
-        />
-    </LinearLayout>
+
 
 </androidx.cardview.widget.CardView>

@@ -15,11 +15,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Context context;
     private ArrayList<Visitor> visitorArrayList;
+    private void sendEmail(String to,String message) {
+
+        //Creating SendMail object
+        SendMail sm = new SendMail(context,to,"Enjoy Your Visit",message);
+
+        //Executing sendmail to send email
+        sm.execute();
+    }
     public VisitorAdapter(Context context,ArrayList<Visitor> visitorArrayList){
         this.context = context;
         this.visitorArrayList = visitorArrayList;
@@ -37,7 +44,6 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
         holder.hName.setText(visitorArrayList.get(position).gethName());
         holder.hMobile.setText(visitorArrayList.get(position).gethMobile());
         holder.hEmail.setText(visitorArrayList.get(position).gethEmail());
-        holder.hAddress.setText(visitorArrayList.get(position).gethAddress());
         holder.vName.setText(visitorArrayList.get(position).getvName());
         holder.vMobile.setText(visitorArrayList.get(position).getvMobile());
         holder.vEmail.setText(visitorArrayList.get(position).getvEmail());
@@ -48,6 +54,15 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
             public void onClick(View view) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
+                boolean flag = false;
+                String msg = "Details of your visit are mentioned below \n" +
+                        "Name: " + visitorArrayList.get(position).getvName()
+                        + "\n" + "Email: "  + visitorArrayList.get(position).gethEmail() + "\n"
+                        + "Check-in time: " + visitorArrayList.get(position).getCheckIn() + "\n"
+                        + "Check-out time: " + dtf.format(now) + "\n"
+                        + "Host Name: " + visitorArrayList.get(position).gethName() + "\n"
+                        + "Address Visited: " + visitorArrayList.get(position).gethAddress() + "\n";
+                sendEmail(visitorArrayList.get(position).getvEmail(),msg);
                 db.collection("Visitor Details").document(id).update("Check Out Time",dtf.format(now)).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class VisitorViewHolder extends RecyclerView.ViewHolder {
-    public TextView vName,vEmail,vMobile,hName,hEmail,hMobile,hAddress;
+    public TextView vName,vEmail,vMobile,hName,hEmail,hMobile;
     public Button checkout;
     private Context context;
     public VisitorViewHolder(@NonNull View itemView) {
@@ -18,7 +18,6 @@ public class VisitorViewHolder extends RecyclerView.ViewHolder {
         vName = itemView.findViewById(R.id.vName);
         vEmail = itemView.findViewById(R.id.vEmail);
         vMobile = itemView.findViewById(R.id.vMobile);
-        hAddress = itemView.findViewById(R.id.hAddress);
         hEmail = itemView.findViewById(R.id.hEmail);
         hMobile = itemView.findViewById(R.id.hMobile);
         hName = itemView.findViewById(R.id.hName);
