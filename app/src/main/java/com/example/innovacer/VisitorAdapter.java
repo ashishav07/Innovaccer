@@ -1,6 +1,5 @@
 package com.example.innovacer;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,7 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
     private void sendEmail(String to,String message) {
 
         //Creating SendMail object
-        SendMail sm = new SendMail(context,to,"Enjoy Your Visit",message);
+        SendMail sm = new SendMail(context,to,"Thank you for your visit",message);
 
         //Executing sendmail to send email
         sm.execute();
@@ -54,7 +53,6 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
             public void onClick(View view) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
-                boolean flag = false;
                 String msg = "Details of your visit are mentioned below \n" +
                         "Name: " + visitorArrayList.get(position).getvName()
                         + "\n" + "Email: "  + visitorArrayList.get(position).gethEmail() + "\n"
@@ -67,7 +65,9 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorViewHolder> {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(context,"Checked Out Successfully",Toast.LENGTH_SHORT).show();
-                        context.startActivity(new Intent(context,MainActivity.class));
+                        visitorArrayList.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, visitorArrayList.size());
                     }
                 });
             }

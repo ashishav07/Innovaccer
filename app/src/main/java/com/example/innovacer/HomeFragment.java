@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -133,6 +134,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         details.put("Check In Time",dtf.format(now));
         details.put("Check Out Time","null");
         details.put("Check In Date",dt.format(current));
+        details.put("Timestamps", Calendar.getInstance().getTime());
         String id = db.collection("Visitor Details").document().getId();
         details.put("id",id);
         db.collection("Visitor Details").document(id).set(details).addOnCompleteListener(new OnCompleteListener<Void>() {
