@@ -1,6 +1,16 @@
 # Innovaccer
-Description:
-First screen that user will see is a form for entering details of host and visior, and in the navigatoin menu the user can see the current visitors(visitors who are checked in) and history of visitors who have checked out.
 
-Approach:
+# Description
+Innovaccer is an entry management Android application . When a visitor comes to meet any employee , he/she will enter his/her details along with the host details . After check-in the host will receive an e-mail and sms regarding the visitor details. After the meeting is over the visitor can check-out and will receive an email regarding the visit.
+
+Compatible OS - Android
+Frontend - Java
+Backend - Firebase(Firestore)
+
+# Installation
+
+You can install it by downloading the apk from the apk folder.
+You can also install it in your device/emulator by cloning this repository.
+
+# Approach:
 Firebase is used as backend in this application , when a visitor checks in,his details aand the host details are sent to the database and an email is sent to the host through JavaMail API and SMS is sent through the mobile in which the app is being used and when user checks out, an Email is sent to the visitor regarding the visit.To display the current visitors and history, a memory efficient Recycler View is used instead of a simple List View.
