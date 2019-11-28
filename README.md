@@ -14,9 +14,8 @@ You can also install it in your device/emulator by cloning this repository.
 
 # How to use
 First Screen which pops up is form which he visitors need to fill when they arrive at the office. After filling the form when they click on check-in the details of the visitor are sent to the host through e-mail and sms.
-
-![Empty Form](https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/form.png)
-
-
+<br/>
+<img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/form.png" height = "700" width = "300">
+<br/>
 # Approach:
 Firebase is used as backend in this application , when a visitor checks in,his details aand the host details are sent to the database and an email is sent to the host through JavaMail API and SMS is sent through the mobile in which the app is being used and when user checks out, an Email is sent to the visitor regarding the visit.To display the current visitors and history, a memory efficient Recycler View is used instead of a simple List View.
