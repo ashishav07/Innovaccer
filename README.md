@@ -15,7 +15,7 @@ You can also install it in your device/emulator by cloning this repository.
 # How to use
 First Screen which pops up is form which he visitors need to fill when they arrive at the office. After filling the form when they click on check-in the details of the visitor are sent to the host through e-mail and sms.
 
-![Empty Form](/New folder/form.png)
+![Empty Form](https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/form.png)
 
 
 # Approach:
