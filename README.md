@@ -20,6 +20,16 @@ First Screen which pops up is form which he visitors need to fill when they arri
 <br/>SMS and E-mail Screenshots <br/>
 <img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/host%20email.jpg" height = "700" width = "300" >
 <img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/host%20sms.jpg" height = "700" width = "300">
-
-# Approach:
-Firebase is used as backend in this application , when a visitor checks in,his details aand the host details are sent to the database and an email is sent to the host through JavaMail API and SMS is sent through the mobile in which the app is being used and when user checks out, an Email is sent to the visitor regarding the visit.To display the current visitors and history, a memory efficient Recycler View is used instead of a simple List View.
+<br/><br/>
+You can navigate through the current visitors and history of who have visited through the navigation drawer menu <br/>
+<img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/navigation.jpg" height = "700" width = "300" >
+<br/>
+In the current visitor fragment the visitor can check out and on pressing check out the visitor will receive details of his visit<br/>
+<img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/current.jpg" height = "700" width = "300">
+<img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/visitor%20email.jpg" height = "700" width = "300">
+<br/>In the history fragment, we can see who have checked out <br/>
+<img src="https://github.com/ashishav07/Innovaccer/blob/master/New%20folder/history.jpg" height = "700" width = "300"><br/>
+# Other APIs
+<ul>
+  <li>Java Mail</li>
+</ul>
