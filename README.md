@@ -1,4 +1,4 @@
-# Innovaccer
+# Innovaccer Summer Geeks Project, 2019.
 
 # Description
 Innovaccer is an entry management Android application . When a visitor comes to meet any employee , he/she will enter his/her details along with the host details . After check-in the host will receive an e-mail and sms regarding the visitor details. After the meeting is over the visitor can check-out and will receive an email regarding the visit.
